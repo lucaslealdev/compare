@@ -1,0 +1,68 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+.container {
+  background-color: rgb(66, 66, 66);
+  width: 800px;
+  max-width: 100%;
+  padding: 15px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+ol {
+  padding-left: 30px;
+}
+
+button {
+  background: rgb(93, 0, 0);
+  color: white;
+  padding: 4px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+p {
+  text-align: center;
+  padding: 8px;
+}
+
+#form {
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+li {
+  padding-left: 10px;
+}
+
+.green {
+  font-size: 20px;
+  background-color: green;
+}
+
+ol {
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+  display: block;
+}

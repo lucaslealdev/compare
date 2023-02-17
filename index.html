@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Checker</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <h1>Compare</h1>
+    <h3>Escaneie os códigos para comparar.</h3>
+    <form id="form">
+      <input type="text" id="codigo" placeholder="leia o código aqui">
+    </form>
+    <p><button onclick="if (confirm('Tem certeza?')) clearList()">❌ Limpar histórico</button></p>
+    <h4>Histórico:</h4>
+    <ol id="lista">
+      <li></li>
+    </ol>
+  </main>
+  <script>
+    const get = () => {
+      let d = localStorage.getItem('codigos') || '[]';
+      d = JSON.parse(d);
+      return d;
+    }
+
+    const add = (c) => {
+      const d = get();
+      d.unshift(c);
+      localStorage.setItem('codigos', JSON.stringify(d));
+      updateList();
+    }
+
+    const updateList = () => {
+      if (get().length > 0) {
+        lista.innerHTML = '';
+        get().forEach((e) => {
+          lista.insertAdjacentHTML('beforeend', `<li>${e}</li>`);
+          console.log(e);
+        });
+        const p = document.querySelector('#lista li:nth-child(1)');
+        const s = document.querySelector('#lista li:nth-child(2)');
+        if (p.innerText === s.innerText) {
+          p.classList.add('green');
+          s.classList.add('green');
+        }
+      } else {
+        lista.innerHTML = '<li>Por enquanto você não leu nenhum código.</li>';
+      }
+    }
+
+    const clearList = () => {
+      localStorage.clear();
+      updateList();
+      codigo.focus();
+    }
+    updateList();
+
+    codigo.focus();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      add(codigo.value);
+      codigo.value = '';
+    })
+  </script>
+</body>
+</html>
