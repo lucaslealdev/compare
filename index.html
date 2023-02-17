@@ -47,7 +47,7 @@
         });
         const p = document.querySelector('#lista li:nth-child(1)');
         const s = document.querySelector('#lista li:nth-child(2)');
-        if (p.innerText === s.innerText) {
+        if (p && s && p.innerText === s.innerText) {
           p.classList.add('green');
           s.classList.add('green');
         }
@@ -69,7 +69,12 @@
       e.preventDefault();
       add(codigo.value);
       codigo.value = '';
+      form.reset();
     })
+
+    setInterval(() => {
+      codigo.focus();
+    }, 300);
   </script>
 </body>
 </html>
