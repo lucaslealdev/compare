@@ -13,6 +13,7 @@
 </head>
 <body>
   <main class="container">
+    <button onclick="changeRegex();" id="regexbtn">⚙️</button>
     <h1>Compare</h1>
     <h3>Escaneie os códigos para comparar.</h3>
     <form id="form">
@@ -25,14 +26,17 @@
     </ol>
   </main>
   <script>
+    const local = {
+      getItem: (value) => JSON.parse(localStorage.getItem(value) || '[]')
+    };
     const get = () => {
-      let d = localStorage.getItem('codigos') || '[]';
-      d = JSON.parse(d);
-      return d;
+      return local.getItem('codigos');
     }
 
     const add = (c) => {
       const d = get();
+      const r = new RegExp(localStorage.getItem('regex'), 'gm');
+      c = c.replace(r, '');
       d.unshift(c);
       localStorage.setItem('codigos', JSON.stringify(d));
       updateList();
@@ -43,7 +47,6 @@
         lista.innerHTML = '';
         get().forEach((e) => {
           lista.insertAdjacentHTML('beforeend', `<li>${e}</li>`);
-          console.log(e);
         });
         const p = document.querySelector('#lista li:nth-child(1)');
         const s = document.querySelector('#lista li:nth-child(2)');
@@ -75,6 +78,14 @@
     setInterval(() => {
       codigo.focus();
     }, 300);
+
+    const setRegex = (r) => localStorage.setItem('regex', r);
+    if (!localStorage.getItem('regex')) setRegex('((^P)|[^0-9A-z]|([0-9][A-z][0-9]$))');
+    const changeRegex = () => {
+      let nr = prompt('Digite o novo regex, ou cancele para restaurar o padrão', localStorage.getItem('regex'));
+      if (nr===null) nr = '((^P)|[^0-9A-z]|([0-9][A-z][0-9]$))';
+      setRegex(nr);
+    };
   </script>
 </body>
 </html>
