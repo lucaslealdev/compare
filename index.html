@@ -60,7 +60,7 @@
     }
 
     const clearList = () => {
-      localStorage.clear();
+      localStorage.setItem('codigos', '[]');
       updateList();
       codigo.focus();
     }
