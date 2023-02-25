@@ -26,6 +26,7 @@ h1, h3 {
   margin: 0 auto;
   margin-top: 20px;
   box-sizing: border-box;
+  border-radius: 8px;
 }
 
 ol {
