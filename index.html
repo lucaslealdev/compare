@@ -13,7 +13,7 @@
 </head>
 <body>
   <main class="container">
-    <button onclick="changeRegex();" id="regexbtn">⚙️</button>
+    <label for="showmodal" id="cfgbtn"><span class="iconify" data-icon="mdi-cog-outline"></span></label>
     <h1>Compare</h1>
     <h3>Escaneie os códigos para comparar.</h3>
     <form id="form">
@@ -25,67 +25,31 @@
       <li></li>
     </ol>
   </main>
-  <script>
-    const local = {
-      getItem: (value) => JSON.parse(localStorage.getItem(value) || '[]')
-    };
-    const get = () => {
-      return local.getItem('codigos');
-    }
-
-    const add = (c) => {
-      const d = get();
-      const r = new RegExp(localStorage.getItem('regex'), 'gm');
-      c = c.replace(r, '');
-      d.unshift(c);
-      localStorage.setItem('codigos', JSON.stringify(d));
-      updateList();
-    }
-
-    const updateList = () => {
-      if (get().length > 0) {
-        lista.innerHTML = '';
-        get().forEach((e) => {
-          lista.insertAdjacentHTML('beforeend', `<li>${e}</li>`);
-        });
-        const p = document.querySelector('#lista li:nth-child(1)');
-        const s = document.querySelector('#lista li:nth-child(2)');
-        if (p && s && p.innerText === s.innerText) {
-          p.classList.add('green');
-          s.classList.add('green');
-        }
-      } else {
-        lista.innerHTML = '<li>Por enquanto você não leu nenhum código.</li>';
-      }
-    }
-
-    const clearList = () => {
-      localStorage.setItem('codigos', '[]');
-      updateList();
-      codigo.focus();
-    }
-    updateList();
-
-    codigo.focus();
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      add(codigo.value);
-      codigo.value = '';
-      form.reset();
-    })
-
-    setInterval(() => {
-      codigo.focus();
-    }, 300);
-
-    const setRegex = (r) => localStorage.setItem('regex', r);
-    if (!localStorage.getItem('regex')) setRegex('((^P)|[^0-9A-z]|([0-9][A-z][0-9]$))');
-    const changeRegex = () => {
-      let nr = prompt('Digite o novo regex, ou cancele para restaurar o padrão', localStorage.getItem('regex'));
-      if (nr===null) nr = '((^P)|[^0-9A-z]|([0-9][A-z][0-9]$))';
-      setRegex(nr);
-    };
-  </script>
+  <input type="checkbox" id="showmodal">
+  <section class="modal">
+    <label class="shadow" for="showmodal"></label>
+    <main>
+      <header>Configurações</header>
+      <label class="close" for="showmodal"><span class="iconify" data-icon="mdi-close"></span></label>
+      <section>
+        <h5>Expressões regulares:</h5>
+        <input type="text" class="s" id="inputNewRegex"><button class="btn s small" onclick="addRegex()"><span class="iconify" data-icon="mdi-plus"></span></button>
+        <ul id="regexes">
+        </ul>
+      </section>
+      <footer>
+        <div class="left">
+          <label class="btn d" onclick="padroes();">Restaurar padrões</label>
+        </div>
+        <div class="right">
+          <label class="btn" for="showmodal">Cancelar</label>
+          <button class="btn s" onclick="saveCfg()">Salvar</button>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+    </main>
+  </section>
+  <script src="script.js"></script>
+  <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </body>
 </html>

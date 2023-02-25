@@ -2,10 +2,13 @@
   padding: 0;
   margin: 0;
   border: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: black;
   color: rgb(255, 255, 255);
 }
@@ -16,16 +19,25 @@ h1, h3 {
 
 .container {
   background-color: rgb(66, 66, 66);
-  width: 800px;
+  width: 600px;
   max-width: 100%;
   padding: 15px;
   display: block;
   margin: 0 auto;
   margin-top: 20px;
+  box-sizing: border-box;
 }
 
 ol {
   padding-left: 30px;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+}
+ol li {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
 }
 
 button {
@@ -67,3 +79,136 @@ ol {
   overflow-y: auto;
   display: block;
 }
+
+#cfgbtn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+}
+.modal .shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal .close {
+  color: black;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.modal main {
+  position: relative;
+  width: 500px;
+  display: block;
+  margin: 30px auto;
+  max-width: calc(100vw - 30px);
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  min-height: 200px;
+}
+.modal main header {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  text-align: center;
+}
+.modal main section {
+  padding: 8px 16px;
+}
+.modal main footer {
+  padding: 8px;
+}
+
+#showmodal {
+  display: none;
+}
+
+#showmodal:checked ~ .modal {
+  display: block;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.btn {
+  display: inline-block;
+  margin: 6px;
+  outline: 1px solid silver;
+  border-radius: 4px;
+  padding: 4px 9px;
+  background-color: transparent;
+  color: black;
+  font-weight: normal;
+  font-size: 14px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.222);
+  cursor: pointer;
+  min-width: 65px;
+  text-align: center;
+  vertical-align: middle;
+}
+.btn.s {
+  background: rgb(0, 177, 86);
+  outline: 1px solid #007e3d;
+  color: white;
+}
+.btn.d {
+  background: rgb(198, 46, 0);
+  color: white;
+  outline: 1px solid #932200;
+}
+.btn.small {
+  min-width: auto;
+  padding: 2px;
+  margin: 2px;
+  line-height: 1;
+  font-size: 15px;
+}
+
+input.s {
+  font-size: 12px;
+  border: 1px solid silver;
+  height: 12px;
+}
+
+ul#regexes {
+  list-style-type: none;
+  margin-top: 14px;
+  font-size: 13px;
+}
+ul#regexes li {
+  padding: 0;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #dfdfdf;
+  outline: 1px solid silver;
+  cursor: pointer;
+  margin-left: 7px;
+}
+ul#regexes li:first-child {
+  margin-left: 0px;
+}
+
+.clearfix {
+  clear: both;
+  display: block;
+}/*# sourceMappingURL=style.css.map */
