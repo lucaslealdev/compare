@@ -1,0 +1,266 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  user-select: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+.container {
+  background-color: rgb(66, 66, 66);
+  width: 600px;
+  max-width: 100%;
+  padding: 15px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+ol {
+  padding-left: 30px;
+  user-select: text;
+  li {
+    user-select: text;
+  }
+}
+
+button {
+  background: rgb(93, 0, 0);
+  color: white;
+  padding: 4px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  padding: 8px;
+}
+
+#form {
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+li {
+  padding-left: 10px;
+}
+
+.green {
+  font-size: 20px;
+  background-color: green;
+}
+
+ol {
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+  display: block;
+}
+
+#cfgbtn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .7);
+  }
+  .close {
+    color: black;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  main {
+    position: relative;
+    width: 500px;
+    display: block;
+    margin: 30px auto;
+    max-width: calc(100vw - 30px);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    min-height: 200px;
+    header {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgb(231, 231, 231);
+      text-align: center;
+    }
+    section {
+      padding: 8px 16px;
+    }
+    footer {
+      padding: 8px;
+    }
+  }
+}
+#showmodal {display: none;}
+#showmodal:checked ~ .modal {
+  display: block;
+  z-index: 999;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+$green: rgb(0, 177, 86);
+$red: rgb(198, 46, 0);
+.btn {
+  display: inline-block;
+  margin: 6px;
+  outline: 1px solid silver;
+  border-radius: 4px;
+  padding: 4px 9px;
+  background-color: transparent;
+  color: black;
+  font-weight: normal;
+  font-size: 14px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.222);
+  cursor: pointer;
+  min-width: 65px;
+  text-align: center;
+  vertical-align: middle;
+  &.s {
+    background: $green;
+    outline: 1px solid darken($green, 10%);
+    color: white;
+  }
+  &.d {
+    background: $red;
+    color: white;
+    outline: 1px solid darken($red, 10%);
+  }
+  &.small {
+    min-width: auto;
+    padding: 2px;
+    margin: 2px;
+    line-height: 1;
+    font-size: 15px;
+  }
+}
+
+input {
+  &.s {
+    font-size: 12px;
+    border: 1px solid silver;
+    height: 12px;
+  }
+}
+
+ul#regexes {
+  list-style-type: none;
+  margin-top: 14px;
+  font-size: 13px;
+  li {
+    padding: 0;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: lighten(silver, 12%);
+    outline: 1px solid silver;
+    cursor: pointer;
+    margin-left: 7px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
+
+.clearfix {
+  clear: both;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  #limpar, #compartilhar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    margin: 0;
+    margin-bottom: env(safe-area-inset-bottom);
+    border-radius: 0;
+    padding: 20px 20px;
+    width: 50%;
+    line-height: 21px;
+  }
+  #codigo {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: black;
+  }
+  #compartilhar {
+    position: fixed;
+    left: initial;
+    right: 0px;
+    outline: none;
+    z-index: 0;
+  }
+  ol {
+    max-height: calc(100vh - 236px);
+  }
+  .modal {
+    input {
+      height: 46px;
+    }
+    .btn {
+      padding: 20px 20px;
+      outline: none;
+      border-top: 1px solid silver;
+      box-shadow: none;
+    }
+    footer .btn, main {
+      border-radius: 0;margin: 0;
+    }
+    main footer {
+      padding: 0;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    main > footer > div.right,
+    main > footer > div.left {
+      flex: 1;
+      display: flex;
+      label, button {flex:1}
+    }
+  }
+}

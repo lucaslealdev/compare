@@ -19,7 +19,7 @@
     <form id="form">
       <input type="text" id="codigo" placeholder="leia o código aqui">
     </form>
-    <p><button onclick="if (confirm('Tem certeza?')) clearList()">❌ Limpar histórico</button></p>
+    <p><button id="limpar" onclick="if (confirm('Tem certeza?')) clearList()">❌ Limpar histórico</button></p>
     <h4>Histórico:</h4>
     <ol id="lista">
       <li></li>
@@ -49,6 +49,7 @@
       </footer>
     </main>
   </section>
+  <button id="compartilhar" class="btn s"><span class="iconify" data-icon="mdi-share"></span> Compartilhar</button>
   <script src="script.js"></script>
   <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </body>

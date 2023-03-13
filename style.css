@@ -140,6 +140,7 @@ ol {
 
 #showmodal:checked ~ .modal {
   display: block;
+  z-index: 999;
 }
 
 .right {
@@ -212,4 +213,66 @@ ul#regexes li:first-child {
 .clearfix {
   clear: both;
   display: block;
+}
+
+@media (max-width: 480px) {
+  #limpar, #compartilhar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    margin: 0;
+    margin-bottom: env(safe-area-inset-bottom);
+    border-radius: 0;
+    padding: 20px 20px;
+    width: 50%;
+    line-height: 21px;
+  }
+  #codigo {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: black;
+  }
+  #compartilhar {
+    position: fixed;
+    left: initial;
+    right: 0px;
+    outline: none;
+    z-index: 0;
+  }
+  ol {
+    max-height: calc(100vh - 236px);
+  }
+  .modal input {
+    height: 46px;
+  }
+  .modal .btn {
+    padding: 20px 20px;
+    outline: none;
+    border-top: 1px solid silver;
+    box-shadow: none;
+  }
+  .modal footer .btn, .modal main {
+    border-radius: 0;
+    margin: 0;
+  }
+  .modal main footer {
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .modal main > footer > div.right,
+  .modal main > footer > div.left {
+    flex: 1;
+    display: flex;
+  }
+  .modal main > footer > div.right label, .modal main > footer > div.right button,
+  .modal main > footer > div.left label,
+  .modal main > footer > div.left button {
+    flex: 1;
+  }
 }/*# sourceMappingURL=style.css.map */
