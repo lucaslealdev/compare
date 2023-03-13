@@ -215,7 +215,7 @@ ul#regexes li:first-child {
   display: block;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 800px) {
   #limpar, #compartilhar {
     position: fixed;
     bottom: 0px;
