@@ -103,7 +103,6 @@ document.addEventListener('keydown', (event) => {
 compartilhar.addEventListener('click', () => navigator.share({
   title: "Leituras",
   text: JSON.getItem('codigos').reduce((a, i) => a + i + '\r\n', ''),
-  url: "https://developer.mozilla.org",
 }));
 
 if (!navigator.share && !window.location.hash) compartilhar.remove();
